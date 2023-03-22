@@ -14,7 +14,7 @@ app.get("/", async (req, res) => {
   const kids = req.query.kids || 1;
   const hairLength = req.query.hairLength || "short";
 
-  const api_url = `https://api.petfinder.com/v2/animals?&location=${location}&gender=${gender}&age=${age}&size=${size}&coat=${hairLength}&good_with_children=${kids}`;
+  const api_url = `https://api.petfinder.com/v2/animals?type=dog&location=${location}&gender=${gender}&age=${age}&size=${size}&coat=${hairLength}&good_with_children=${kids}`;
 
   const Bearer = await axios
     .post("https://api.petfinder.com/v2/oauth2/token", {
