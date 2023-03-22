@@ -10,7 +10,7 @@ app.get("/", async (req, res) => {
   let location;
   req.query.location === "vancouver"
     ? (location = "Vancouver, British Columbia, Canada")
-    : (location = "Toronto,British Columbia,Canada");
+    : (location = "Toronto, British Columbia,Canada");
 
   // const location = req.query.location || "Vancouver, British Columbia, Canada"; //vancouver toronto -> 43.66006373299547, -79.39866377573466
   const gender = req.query.gender || "male";
