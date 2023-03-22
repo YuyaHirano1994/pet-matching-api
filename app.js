@@ -7,12 +7,10 @@ require("dotenv").config();
 
 app.get("/", async (req, res) => {
   //params
-  let location;
-  req.query.location === "vancouver"
-    ? (location = "Vancouver, British Columbia, Canada")
-    : (location = "Toronto, British Columbia,Canada");
-
-  // const location = req.query.location || "Vancouver, British Columbia, Canada"; //vancouver toronto -> 43.66006373299547, -79.39866377573466
+  const location =
+    req.query.location === "vancouver"
+      ? (value = "Vancouver, British Columbia, Canada")
+      : (value = "Toronto, Ontario, Canada");
   const gender = req.query.gender || "male";
   const age = req.query.age || "baby";
   const size = req.query.size || "large";
@@ -44,5 +42,5 @@ app.get("/", async (req, res) => {
   }
 });
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
