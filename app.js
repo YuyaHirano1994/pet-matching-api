@@ -7,7 +7,12 @@ require("dotenv").config();
 
 app.get("/", async (req, res) => {
   //params
-  const location = req.query.location || "Vancouver, British Columbia, Canada"; //vancouver toronto -> 43.66006373299547, -79.39866377573466
+  let location;
+  req.query.location === "vancouver"
+    ? (location = "Vancouver, British Columbia, Canada")
+    : (location = "Toronto,British Columbia,Canada");
+
+  // const location = req.query.location || "Vancouver, British Columbia, Canada"; //vancouver toronto -> 43.66006373299547, -79.39866377573466
   const gender = req.query.gender || "male";
   const age = req.query.age || "baby";
   const size = req.query.size || "large";
