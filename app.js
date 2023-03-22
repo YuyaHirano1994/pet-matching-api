@@ -32,7 +32,7 @@ app.get("/", async (req, res) => {
         Authorization: `Bearer ${Bearer}`,
       },
     });
-    res.json(response.data);
+    return res.json(response.data);
   } catch (error) {
     console.error(error);
     res.status(500).send("Server Error");
