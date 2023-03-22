@@ -7,6 +7,7 @@ require("dotenv").config();
 
 app.get("/", async (req, res) => {
   //params
+  const type = "dog";
   const location = req.query.location || "49.283699818891314, -123.12733866682757"; //vancouver toronto -> 43.66006373299547, -79.39866377573466
   const gender = req.query.gender || "male";
   const age = req.query.age || "baby";
@@ -14,7 +15,7 @@ app.get("/", async (req, res) => {
   const kids = req.query.kids || 1;
   const hairLength = req.query.hairLength || "short";
 
-  const api_url = `https://api.petfinder.com/v2/animals?type=dog&location=${location}&gender=${gender}&age=${age}&size=${size}&coat=${hairLength}&good_with_children=${kids}`;
+  const api_url = `https://api.petfinder.com/v2/animals?type=${type}&location=${location}&gender=${gender}&age=${age}&size=${size}&coat=${hairLength}&good_with_children=${kids}`;
 
   const Bearer = await axios
     .post("https://api.petfinder.com/v2/oauth2/token", {
