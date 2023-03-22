@@ -16,20 +16,15 @@ app.get("/", async (req, res) => {
 
   const api_url = `https://api.petfinder.com/v2/animals?&location=${location}&gender=${gender}&age=${age}&size=${size}&coat=${hairLength}&good_with_children=${kids}`;
 
-  try {
-    const Bearer = await axios
-      .post("https://api.petfinder.com/v2/oauth2/token", {
-        grant_type: process.env.PETFINDER_GRANT_TYPE,
-        client_id: process.env.PETFINDER_API_KEY,
-        client_secret: process.env.PETFINDER_SECRET_KEY,
-      })
-      .then((res) => {
-        return res.data.access_token;
-      });
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Server Error");
-  }
+  const Bearer = await axios
+    .post("https://api.petfinder.com/v2/oauth2/token", {
+      grant_type: process.env.PETFINDER_GRANT_TYPE,
+      client_id: process.env.PETFINDER_API_KEY,
+      client_secret: process.env.PETFINDER_SECRET_KEY,
+    })
+    .then((res) => {
+      return res.data.access_token;
+    });
 
   try {
     const response = await axios.get(api_url, {
