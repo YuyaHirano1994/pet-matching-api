@@ -5,7 +5,7 @@ const app = express();
 app.use(cors());
 require("dotenv").config();
 
-app.get("/api/pets", async (req, res) => {
+app.get("/", async (req, res) => {
   //params
   const location = req.query.location || "49.283699818891314, -123.12733866682757"; //vancouver toronto -> 43.66006373299547, -79.39866377573466
   const gender = req.query.gender || "male";
